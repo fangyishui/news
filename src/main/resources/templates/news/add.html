@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>添加富文本</title>
+		<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+<!-- include summernote css/js -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+</head>
+<body>
+		
+		<form action="/news" method="post">
+<!-- 			<div id="summernote"></div>  -->
+			<textarea id="summernote" name="content"></textarea>
+			<input value="提交" type="submit">
+		</form>
+		
+		<form action="/upload" method="post" enctype="multipart/form-data">
+			<input type="file" name="file" value="上传文件">
+			<input value="图片提交" type="submit">
+		</form>
+</body>
+<script>
+//编辑器功能=====================================
+$("#summernote").summernote({
+    lang : 'zh-CN',// 语言
+   height : 496, // 高度
+   minHeight : 300, // 最小高度
+   placeholder : '请输入文章内容', // 提示       
+   // summernote自定义配置
+   toolbar: [
+     ['operate', ['undo','redo']],
+     ['magic',['style']],
+     ['style', ['bold', 'italic', 'underline', 'clear']],
+     ['para', ['height','fontsize','ul', 'ol', 'paragraph']],
+     ['font', ['strikethrough', 'superscript', 'subscript']],
+     ['color', ['color']],
+     ['insert',['picture','video','link','table','hr']],
+     ['layout',['fullscreen','codeview']],
+   ],
+   callbacks : { // 回调函数
+       // 上传图片时使用的回调函数   因为我们input选择的本地图片是二进制图片，需要把二进制图片上传服务器，服务器再返回图片url，就需要用到callback这个回调函数
+       onImageUpload : function(files) { 
+           var form=new FormData();
+               form.append('myFileName',files[0])  //myFileName 是上传的参数名，一定不能写错
+           $.ajax({
+               type:"post",
+               url:"${path}/Img/upload", //上传服务器地址
+               dataType:'json',
+               data:form,
+               processData : false,
+                  contentType : false,
+                  cache : false,
+                  success:function(data){
+                   console.log(data.data)                            
+                     $('#summernote').summernote('editor.insertImage',data.data);
+                  }
+           })
+       }
+   }
+});
+</script>
+</html>
