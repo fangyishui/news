@@ -4,25 +4,29 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileUtil {
 	
-	private static final String FILE_PATH = "D:\\tt\\";
+	private static final String FILE_PATH = "D:\\tts\\";
+//	private static final String FILE_PATH = "/tts/";
 	
 	//文件上传工具类服务方法
-    public static String uploadFile(MultipartFile file, String fileName){
+    public static String uploadFile(MultipartFile file, String fileName,HttpServletRequest request){
        
     	String suffixName = fileName.substring(fileName.lastIndexOf("."));
     	
     	String name = UUID.randomUUID()+"_"+System.currentTimeMillis() + suffixName; 
     	
-    	
-    	File newFile = new File(FILE_PATH+name);
-    	File newFile2 = new File(FILE_PATH);
-        if(!newFile2.exists()){
-        	newFile2.mkdirs();
+        File path = new File(FILE_PATH);
+        
+        if(!path.exists()){
+        	path.mkdirs();
         }
+        
+    	File newFile = new File(FILE_PATH+name);
         
         try {
 			file.transferTo(newFile);
@@ -30,7 +34,7 @@ public class FileUtil {
 			e.printStackTrace();
 		}
         
-        return name;
+        return FILE_PATH+name;
     }
 	
     //文件类型
@@ -39,7 +43,7 @@ public class FileUtil {
     	String fileType = fileName.substring(fileName.lastIndexOf(".")+1);
     	String type = fileType.toUpperCase();
     	
-    	if(type.equals("PNG") || type.equals("TXT")) {
+    	if(type.equals("PNG") || type.equals("TXT") || type.equals("JPG") || type.equals("JPEG")) {
     		
     		return true;
     	}

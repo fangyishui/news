@@ -1,7 +1,7 @@
 logging:
   path: /log/
   file: log.log 
- 
+
 
 spring:
   datasource:
@@ -20,3 +20,5 @@ spring:
 #    open-in-view: true
 #懒加载
 #spring.jpa.open-in-view=true
+
+

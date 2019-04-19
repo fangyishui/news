@@ -1,8 +1,5 @@
 package com.mynews.controller;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,14 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.mynews.entitys.AjaxResult;
 import com.mynews.entitys.News;
 import com.mynews.service.NewsService;
-import com.mynews.utils.FileUtil;
 
 @Controller
 public class NewsController {
@@ -90,29 +83,5 @@ public class NewsController {
 //		System.out.println("@Scheduled(cron=\"0 * * * * MOn-SAT\")");
 //	}
 	
-	//处理文件上传
-    @PostMapping(value="/upload")
-    public @ResponseBody String upload(
-    		@RequestParam("file") MultipartFile file,
-            HttpServletRequest request) {
-     
-    	if (file.isEmpty()){ 
-    		System.out.println("文件为空"); 
-    		return "文件为空";
-    	} 
-    	
-    	// 文件名
-    	String fileName = file.getOriginalFilename(); 
-    	
-    	if(FileUtil.fileSuffix(fileName) == false) {
-    		System.out.println("不支持的文件类型");
-    		return "不支持的文件类型";
-    	}
-    	
-    	FileUtil.uploadFile(file, fileName);
-    	
-    	
-        return null;
-    }
-
+	
 }
