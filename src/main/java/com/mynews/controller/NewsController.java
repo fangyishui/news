@@ -24,15 +24,12 @@ public class NewsController {
 	
 	@PostMapping("news")
 	public String addNews(News news) {
-//		news.setCreatetime(new Date());
 		newsService.addNews(news);
-		
 		return "redirect:/newss";
 	}
 	
 	@DeleteMapping("news/{id}")
 	public Boolean delNews(@PathVariable("id") Integer id) {
-		
 		return newsService.delNews(id);
 	}
 	
@@ -64,7 +61,6 @@ public class NewsController {
 	 */
 	@GetMapping("news")
 	public String addNewsPage(Model model) {
-		
 		return "news/add";
 	}
 	
@@ -78,10 +74,6 @@ public class NewsController {
 		
 		return "";
 	}
-//	@Scheduled(cron="0 * * * * MON-SAT")
-//	public void hello() {
-//		System.out.println("@Scheduled(cron=\"0 * * * * MOn-SAT\")");
-//	}
 	
 	
 }

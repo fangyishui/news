@@ -11,4 +11,6 @@ public interface NewsService {
 	 Boolean updateNews(News n);
 	 News findNewsById(Integer id);
 	 List<News> findNewsAll(int page,int pageSize);
+	 
+	 Boolean addNewsAll(List<News> ns);
 }

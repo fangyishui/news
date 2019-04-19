@@ -65,6 +65,16 @@ public class NewsServiceImpl implements NewsService{
 		Pageable pageable =PageRequest.of(page - 1,pageSize);
 		return newsDao.findAll(pageable).getContent();
 	}
+
+	@Override
+	public Boolean addNewsAll(List<News> ns) {
+		try {
+			newsDao.saveAll(ns);
+		return true;
+		}catch (Exception e) {
+			return false;
+		}
+	}
 	
 	
 }

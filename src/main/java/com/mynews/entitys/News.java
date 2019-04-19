@@ -28,9 +28,6 @@ public class News {
 	
 	private String title;
 	
-	@Column(length=10000)
-	private String content;
-	
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") //入参
 	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss") //出参
 	@CreatedDate
@@ -40,7 +37,13 @@ public class News {
 	
 	private String imgurl;
 	
-	private String Month; //所属月份
+	private Integer newsType;
 	
-	private String year; //所属年份
+	@Column(length=10000)
+	private String content;
+	
+	private Integer year; //所属年份
+	
+	private Integer Month; //所属月份
+	
 }
