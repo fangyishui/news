@@ -16,7 +16,7 @@
 		
 		<form action="/news" method="post">
 <!-- 			<div id="summernote"></div>  -->
-			<textarea id="summernote" name="content"></textarea>
+			<textarea id="summernote" name="content" th:utext="${news.content}"></textarea>
 			<input value="提交" type="submit">
 		</form>
 		<br>

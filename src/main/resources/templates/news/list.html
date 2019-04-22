@@ -6,8 +6,10 @@
 </head>
 <body>
 		<div th:utext="${news.content}"></div> 
-<!-- 		<div th:text="${news.content}"></div>  -->
-<!-- 		<div th:utext="${title}"></div> -->
-<!-- 			<div th:html="${news.content}"></div>  -->
+		
+		<tr th:each="news : ${news}">
+			<td th:value="${news.title}"></td>
+		</tr>
+		
 </body>
 </html>

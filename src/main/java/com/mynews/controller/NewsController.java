@@ -52,8 +52,8 @@ public class NewsController {
 	
 	@GetMapping("newss")
 	public String findNewsAll(Model model){
-		model.addAttribute("news", newsService.findNewsById(1));
-		return "news/list";
+		model.addAttribute("news", newsService.findNewsAll(0, 10));
+		return "news/update";
 	}
 	
 	/**

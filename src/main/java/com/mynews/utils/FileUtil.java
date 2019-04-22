@@ -34,7 +34,7 @@ public class FileUtil {
 			e.printStackTrace();
 		}
         
-        return FILE_PATH+name;
+        return name;
     }
 	
     //文件类型
