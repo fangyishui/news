@@ -1,6 +1,7 @@
 package com.mynews.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +16,8 @@ import com.mynews.service.NewsService;
 @Service
 public class NewsServiceImpl implements NewsService{
 
+//	Map<K, V>
+	
 	@Autowired
 	private NewsDao newsDao;
 

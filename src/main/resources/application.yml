@@ -1,6 +1,6 @@
-logging:
-  path: /log/
-  file: log.log 
+#logging:
+#  path: /log/
+#  file: log.log 
 
 spring:
   datasource:
@@ -16,6 +16,9 @@ spring:
       ddl-auto: update
   thymeleaf:
     cache: false
+  mvc:
+    favicon:
+      enabled: false
 #    open-in-view: true
 #懒加载
 #spring.jpa.open-in-view=true

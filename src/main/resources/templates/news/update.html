@@ -2,72 +2,56 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>添加富文本</title>
+<title>修改新闻</title>
 		<!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-
-<!-- include summernote css/js -->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 </head>
 <body>
 		
-		<form action="/news" method="post">
-<!-- 			<div id="summernote"></div>  -->
-			<textarea id="summernote" name="content" th:utext="${news.content}"></textarea>
-			<input value="提交" type="submit">
-		</form>
-		<br>
-<h1>========================================================================</h1>		
-		<form action="/upload" method="post" enctype="multipart/form-data">
-			<input type="file" name="file" value="上传文件">
-			<input type="file" name="file" value="上传文件">
-			<input type="file" name="file" value="上传文件">
-			<input type="file" name="file" value="上传文件">
-			<input value="图片提交" type="submit">
-		</form>
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					<!--需要区分是员工修改还是添加；-->
+					<form th:action="@{/news}" method="post">
+						<!--发送put请求修改员工数据-->
+						<!--
+						1、SpringMVC中配置HiddenHttpMethodFilter;（SpringBoot自动配置好的）
+						2、页面创建一个post表单
+						3、创建一个input项，name="_method";值就是我们指定的请求方式
+						-->
+						<input type="hidden" name="_method" value="put" th:if="${news!=null}"/>
+						<input type="hidden" name="id" th:if="${news!=null}" th:value="${news.id}">
+						<div class="form-group">
+							<label>新闻标题</label>
+							<input name="title" type="text" class="form-control" placeholder="" th:value="${news!=null}?${news.title}">
+						</div>
+						<div class="form-group">
+							<label>url</label>
+							<input name="url" type="text" class="form-control" placeholder="" th:value="${news!=null}?${news.url}">
+						</div>
+						<div class="form-group">
+							<label>年</label>
+							<input name="year" type="text" class="form-control" placeholder="" th:value="${news!=null}?${news.year}">
+						</div>
+						<div class="form-group">
+							<label>月</label>
+							<input name="month" type="text" class="form-control" placeholder="" th:value="${news!=null}?${news.month}">
+						</div>
+						<div class="form-group">
+							<label>时间</label>
+							<input name="createtime" type="text" class="form-control" placeholder="" th:value="${news!=null}?${#dates.format(news.createtime, 'yyyy-MM-dd HH:mm:ss')}">
+						</div>
+						<div class="form-group">
+							<label>图片路径</label>
+							<input name="imgurl" type="text" class="form-control" placeholder="/img/*.jpg" th:value="${news!=null}?${news.imgurl}">
+						</div>
+						<div class="form-group">
+							<label>来源类型</label>
+							<input name="newsType" type="text" class="form-control" placeholder="来源类型  1：百度 ，2：网页" th:value="${news!=null}?${news.newsType}">
+						</div>
+						<button type="submit" class="btn btn-primary" th:text="${news!=null}?'修改':'添加'">添加</button>
+					</form>
+				</main>
 </body>
-<script>
-//编辑器功能=====================================
-$("#summernote").summernote({
-    lang : 'zh-CN',// 语言
-   height : 496, // 高度
-   minHeight : 300, // 最小高度
-   placeholder : '请输入文章内容', // 提示       
-   // summernote自定义配置
-   toolbar: [
-     ['operate', ['undo','redo']],
-     ['magic',['style']],
-     ['style', ['bold', 'italic', 'underline', 'clear']],
-     ['para', ['height','fontsize','ul', 'ol', 'paragraph']],
-     ['font', ['strikethrough', 'superscript', 'subscript']],
-     ['color', ['color']],
-     ['insert',['picture','video','link','table','hr']],
-     ['layout',['fullscreen','codeview']],
-   ],
-   callbacks : { // 回调函数
-       // 上传图片时使用的回调函数   因为我们input选择的本地图片是二进制图片，需要把二进制图片上传服务器，服务器再返回图片url，就需要用到callback这个回调函数
-       onImageUpload : function(files) { 
-           var form=new FormData();
-               form.append('file',files[0])  //myFileName 是上传的参数名，一定不能写错
-            var name; 
-            $.ajax({
-               type:"post",
-               url:"/upload", //上传服务器地址
-               dataType:'json',
-               data:form,
-               processData : false,
-                  contentType : false,
-                  cache : false,
-                  success:function(data){
-               		console.log(data.message);                            
-                   	$('#summernote').summernote('editor.insertImage','/Img/'+data.message);
-                 }
-           })
-       }
-   }
-});
-</script>
+
 </html>

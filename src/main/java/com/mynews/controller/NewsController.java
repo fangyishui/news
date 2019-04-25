@@ -14,6 +14,7 @@ import com.mynews.entitys.AjaxResult;
 import com.mynews.entitys.News;
 import com.mynews.service.NewsService;
 
+//@RestController
 @Controller
 public class NewsController {
 
@@ -21,40 +22,6 @@ public class NewsController {
 	private NewsService newsService;
 	
 	AjaxResult result = new AjaxResult();
-	
-	@PostMapping("news")
-	public String addNews(News news) {
-		newsService.addNews(news);
-		return "redirect:/newss";
-	}
-	
-	@DeleteMapping("news/{id}")
-	public Boolean delNews(@PathVariable("id") Integer id) {
-		return newsService.delNews(id);
-	}
-	
-	@PutMapping("news")
-	public Boolean updateNews(News news) {
-		return newsService.updateNews(news);
-	}
-	
-//	@GetMapping("news/{id}")
-//	public News findNewsById(@PathVariable("id") Integer id) {
-//		return newsService.findNewsById(id);
-//	}
-	
-//	@GetMapping("newss")
-//	public String findNewsAll(@PathVariable("page") int page,
-//			@PathVariable("pageSize") int pageSize){
-//		return newsService.findNewsAll(page, pageSize);
-//		return "news/list";
-//	}
-	
-	@GetMapping("newss")
-	public String findNewsAll(Model model){
-		model.addAttribute("news", newsService.findNewsAll(0, 10));
-		return "news/update";
-	}
 	
 	/**
 	 * 添加页面
@@ -64,16 +31,43 @@ public class NewsController {
 		return "news/add";
 	}
 	
+	@PostMapping("news")
+	public String addNews(News news) {
+		newsService.addNews(news);
+		return "redirect:/newss";
+	}
+	
+	@DeleteMapping("news/{id}")
+	public String delNews(@PathVariable("id") Integer id) {
+		newsService.delNews(id);
+		return "redirect:/newss";
+	}
+	
 	/**
 	 * 修改页面
 	 */
 	@GetMapping("news/{id}")
-	public String updateNewsPage(@PathVariable Integer id,Model model) {
-		
+	public String updateNewsPage(@PathVariable("id") Integer id,Model model) {
 		model.addAttribute("news", newsService.findNewsById(id));
-		
-		return "";
+		return "news/update";
 	}
 	
+	/**
+	 * 修改
+	 * @param news
+	 * @return
+	 */
+	@PutMapping("news")
+	public String updateNews(News news) {
+		newsService.updateNews(news);
+		return "redirect:/newss";
+	}
+	
+	@GetMapping("newss")
+	public String findNewsAll(Model model){
+		model.addAttribute("newss", newsService.findNewsAll(1, 10));
+		
+		return "news/list";
+	}
 	
 }

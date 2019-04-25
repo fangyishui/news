@@ -28,7 +28,7 @@ public class BugUtils {
 	
 	static final Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT+08:00")); 
 	
-//	@Scheduled(cron="0 0 0,8,16 1/1 * ? *")
+//	@Scheduled(cron="0 * * * * 1-7")
 	@Scheduled(cron="0 0 0,8,16 * * 1-7")
 	public  void saveAll() {
 		List<News> nss1 = BugUtils.findBaiDu();
