@@ -1,7 +1,6 @@
 package com.mynews.service.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -16,18 +15,12 @@ import com.mynews.service.NewsService;
 @Service
 public class NewsServiceImpl implements NewsService{
 
-//	Map<K, V>
 	
 	@Autowired
 	private NewsDao newsDao;
 
 	@Override
 	public Boolean addNews(News n) {
-//		if(null != newsDao.save(n)) {
-//			return true;
-//		}else {
-//			return false;
-//		}
 		try {
 			newsDao.save(n);
 			return true;
@@ -73,7 +66,7 @@ public class NewsServiceImpl implements NewsService{
 	public Boolean addNewsAll(List<News> ns) {
 		try {
 			newsDao.saveAll(ns);
-		return true;
+			return true;
 		}catch (Exception e) {
 			return false;
 		}

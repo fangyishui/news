@@ -1,4 +1,4 @@
-#logging:
+﻿#logging:
 #  path: /log/
 #  file: log.log 
 
@@ -24,3 +24,10 @@ spring:
 #spring.jpa.open-in-view=true
 
 
+  mail:
+    host: smtp.qq.com
+    username: 355746803@qq.com
+    password: uoyfucohfkozbgdc
+    default-encoding: utf-8
+    
+      

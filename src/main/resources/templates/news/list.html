@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" >
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+  	<style type="text/css">
+  		.table tbody tr td{
+            vertical-align: middle;
+        }
+  	</style>
   </head>
   <body>
     	<table class="table table-striped table-sm">
@@ -17,7 +22,7 @@
 					<th>--年--</th>
 					<th>--月--</th>
 					<th>时间</th>
-					<th>图片路径</th>
+<!-- 					<th>图片路径</th> -->
 					<th>来源类型</th>
 					<th>操作</th>
 				</tr>
@@ -26,11 +31,13 @@
 				<tr th:each="n:${newss}">
 					<td th:text="${n.id}"></td>
 					<td><a class="btn" th:href="${n.url}" target="_blank">[[${n.title}]]</a></td>
-					<td th:text="${n.year}"></td>
-					<td th:text="${n.month}"></td>
+					<td th:text="${n.year}+'年'"></td>
+					<td th:text="${n.month}+'月'"></td>
 					<td th:text="${#dates.format(n.createtime, 'yyyy-MM-dd HH:mm:ss')}"></td>
-					<td th:text="${n.imgurl}"></td>
-					<td th:text="${n.newsType}"></td>
+<!-- 					<td th:text="${n.imgurl}"></td> -->
+					<td th:text="百度新闻" th:if="${n.newsType==1}"></td>
+					<td th:text="网易新闻" th:if="${n.newsType==2}"></td>
+					<td th:text="今日头条" th:if="${n.newsType==3}"></td>
 					<td>
 						<a class="btn btn-sm btn-primary" th:href="@{/news/}+${n.id}">编辑</a>
 						<button th:attr="del_uri=@{/news/}+${n.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>

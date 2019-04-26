@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.mynews.entitys.News;
 import com.mynews.service.NewsService;
@@ -29,7 +30,8 @@ public class BugUtils {
 	static final Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT+08:00")); 
 	
 //	@Scheduled(cron="0 * * * * 1-7")
-	@Scheduled(cron="0 0 0,8,16 * * 1-7")
+//	@Scheduled(cron="0 0 0,8,16 * * 1-7")
+	@Scheduled(cron = "0 0 0,6,12,18 * * 1-7")
 	public  void saveAll() {
 		List<News> nss1 = BugUtils.findBaiDu();
 		newsService.addNewsAll(nss1);
@@ -37,8 +39,8 @@ public class BugUtils {
 		List<News> nss2 = BugUtils.findWangYi();
 		newsService.addNewsAll(nss2);
 		
-//		List<News> nss3 = BugUtils.findJinRiTouTiao();
-//		newsService.addNewsAll(nss3);
+		List<News> nss3 = BugUtils.findJinRiTouTiao();
+		newsService.addNewsAll(nss3);
 	}
 	
 	public static List<News> findBaiDu() {
@@ -115,29 +117,28 @@ public class BugUtils {
 			e.printStackTrace();
 		}
 		
-//        System.out.println("返回的json字符串：" + doc.text());
+        String str=JSONObject.parseObject(doc.body().text()).getJSONArray("data").toString();
         
-        JSONObject object=JSONObject.parseObject(doc.text()); 
-        System.out.println(object.getJSONObject("data").get(1).toString());   
+        JSONArray json = (JSONArray) JSONArray.parse(str); 
+        int num =1;
+        for (Object obj : json) { 
+        	News n = new News();
+        	JSONObject o = (JSONObject)obj; 
+        	n.setTitle(o.getString("title"));
+        	n.setUrl("https://www.toutiao.com"+o.getString("source_url"));
+        	n.setImgurl(o.getString("image_url"));
+        	n.setContent(o.getString("abstract"));
+        	n.setNewsType(3);
+			n.setYear(c.get(Calendar.YEAR));
+			n.setMonth(c.get(Calendar.MONTH)+1);
+			
+        	if(num == 10) {
+				break;
+			}
+			num++;
+        	nss.add(n);
+        }
         
-//		Elements elementsByClass = getDoc(url).select("div.title-box").select("a");
-		
-//		int num =1;
-//		for (Element element : elementsByClass) {
-//			News n = new News();
-//			n.setTitle(element.text());
-//			n.setUrl(element.attr("abs:href"));
-//			n.setNewsType(3);
-//			n.setYear(c.get(Calendar.YEAR));
-//			n.setMonth(c.get(Calendar.MONTH)+1);
-//			nss.add(n);
-//			if(num == 10) {
-//				break;
-//			}
-//			
-//			num++;
-//		}
-		
 		return nss;
 	}
 	
@@ -154,7 +155,6 @@ public class BugUtils {
 	}
 	
 	public static void main(String[] args) {
-		
 		System.out.println(BugUtils.findJinRiTouTiao());
 	}
 }
