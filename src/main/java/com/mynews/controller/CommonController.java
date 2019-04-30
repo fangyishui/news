@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mynews.entitys.AjaxResult;
+import com.mynews.utils.ExcelUtil;
 import com.mynews.utils.FileUtil;
 
 @Controller
@@ -87,4 +88,19 @@ public class CommonController {
         return result;
     }
 	
+    @GetMapping("/table")
+    public String table() {
+    	return "news/table";
+    }
+    
+    @GetMapping("/echarts")
+    public String echarts() {
+    	return "echarts";
+    }
+    
+    @GetMapping("/execl")
+    public String execl() {
+//    	ExcelUtil.getWorkbok(in, file)
+    	return "execl";
+    }
 }

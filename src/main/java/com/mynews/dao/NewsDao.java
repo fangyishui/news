@@ -7,5 +7,4 @@ import com.mynews.entitys.News;
 public interface NewsDao  extends JpaRepository<News, Integer>{
 
 	
-	
 }

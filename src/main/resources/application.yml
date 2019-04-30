@@ -23,7 +23,6 @@ spring:
 #懒加载
 #spring.jpa.open-in-view=true
 
-
   mail:
     host: smtp.qq.com
     username: 355746803@qq.com
