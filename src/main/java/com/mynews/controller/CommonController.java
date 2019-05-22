@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mynews.entitys.AjaxResult;
-import com.mynews.utils.ExcelUtil;
 import com.mynews.utils.FileUtil;
 
 @Controller
