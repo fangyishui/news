@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.mynews.controller;
 
 import io.swagger.annotations.Api;
@@ -22,24 +21,3 @@ public class UserController {
 		return "user/main";
 	}
 }
-=======
-package com.mynews.controller;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-
-@Controller
-public class UserController {
-
-	
-	@GetMapping("/login")
-	public String loginPage() {
-		return "user/login";
-	}
-	
-	@GetMapping("/main")
-	public String main() {
-		return "user/main";
-	}
-}
->>>>>>> ffd47112538e7d0d0faeded5eafd822ac47e4e98

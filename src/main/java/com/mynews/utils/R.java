@@ -8,8 +8,8 @@
 
 package com.mynews.utils;
 
-import org.apache.http.HttpStatus;
 
+import org.apache.http.HttpStatus;
 import java.util.HashMap;
 import java.util.Map;
 
