@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14f79b9a-3192-479c-835e-356a3a057774" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/news.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/config/MyWebAppConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/config/MyWebAppConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/controller/CommonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/controller/NewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/controller/NewsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/dao/NewsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/dao/NewsDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/entitys/AjaxResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/entitys/AjaxResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/entitys/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/entitys/News.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/service/NewsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/service/NewsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/service/impl/NewsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/service/impl/NewsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/utils/BugUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/utils/BugUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/utils/ExcelUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/utils/ExcelUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mynews/utils/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mynews/utils/FileUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/echarts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/echarts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/news/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/news/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/news/file.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/news/file.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/news/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/news/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/news/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/news/table.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/news/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/news/update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,17 +107,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/fangyishui/news&#10;&#10;# Conflicts:&#10;#&#9;.gitignore&#10;#&#9;pom.xml&#10;#&#9;src/main/java/com/mynews/NewsApplication.java&#10;#&#9;src/main/java/com/mynews/config/MyWebAppConfiguration.java&#10;#&#9;src/main/java/com/mynews/controller/CommonController.java&#10;#&#9;src/main/java/com/mynews/controller/NewsController.java&#10;#&#9;src/main/java/com/mynews/controller/UserController.java&#10;#&#9;src/main/java/com/mynews/dao/NewsDao.java&#10;#&#9;src/main/java/com/mynews/entitys/AjaxResult.java&#10;#&#9;src/main/java/com/mynews/entitys/News.java&#10;#&#9;src/main/java/com/mynews/service/NewsService.java&#10;#&#9;src/main/java/com/mynews/service/impl/NewsServiceImpl.java&#10;#&#9;src/main/java/com/mynews/utils/BugUtils.java&#10;#&#9;src/main/java/com/mynews/utils/ExcelUtil.java&#10;#&#9;src/main/java/com/mynews/utils/FileUtil.java&#10;#&#9;src/main/resources/application.yml&#10;#&#9;src/main/resources/templates/echarts.html&#10;#&#9;src/main/resources/templates/news/add.html&#10;#&#9;src/main/resources/templates/news/file.html&#10;#&#9;src/main/resources/templates/news/list.html&#10;#&#9;src/main/resources/templates/news/table.html&#10;#&#9;src/main/resources/templates/news/update.html&#10;#&#9;src/main/resources/templates/user/login.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/fangyishui/news&#10;&#10;# Conflicts:&#10;#&#9;.gitignore&#10;#&#9;pom.xml&#10;#&#9;src/main/java/com/mynews/NewsApplication.java&#10;#&#9;src/main/java/com/mynews/config/MyWebAppConfiguration.java&#10;#&#9;src/main/java/com/mynews/controller/CommonController.java&#10;#&#9;src/main/java/com/mynews/controller/NewsController.java&#10;#&#9;src/main/java/com/mynews/controller/UserController.java&#10;#&#9;src/main/java/com/mynews/dao/NewsDao.java&#10;#&#9;src/main/java/com/mynews/entitys/AjaxResult.java&#10;#&#9;src/main/java/com/mynews/entitys/News.java&#10;#&#9;src/main/java/com/mynews/service/NewsService.java&#10;#&#9;src/main/java/com/mynews/service/impl/NewsServiceImpl.java&#10;#&#9;src/main/java/com/mynews/utils/BugUtils.java&#10;#&#9;src/main/java/com/mynews/utils/ExcelUtil.java&#10;#&#9;src/main/java/com/mynews/utils/FileUtil.java&#10;#&#9;src/main/resources/application.yml&#10;#&#9;src/main/resources/templates/echarts.html&#10;#&#9;src/main/resources/templates/news/add.html&#10;#&#9;src/main/resources/templates/news/file.html&#10;#&#9;src/main/resources/templates/news/list.html&#10;#&#9;src/main/resources/templates/news/table.html&#10;#&#9;src/main/resources/templates/news/update.html&#10;#&#9;src/main/resources/templates/user/login.html" />
   </component>
   <component name="WindowStateProjectService">
     <state x="174" y="83" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585984776755">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="174" y="83" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860@0.0.1440.860" timestamp="1585984776755" />
-    <state x="144" y="0" key="CommitChangelistDialog2" timestamp="1585985955252">
+    <state x="144" y="0" key="CommitChangelistDialog2" timestamp="1585985972301">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="144" y="0" key="CommitChangelistDialog2/0.0.1440.860@0.0.1440.860" timestamp="1585985955252" />
+    <state x="144" y="0" key="CommitChangelistDialog2/0.0.1440.860@0.0.1440.860" timestamp="1585985972301" />
     <state x="92" y="92" width="1256" height="676" key="DiffContextDialog" timestamp="1585970755802">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -160,18 +135,18 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="563" y="344" key="VCS.ChangelistChooser/0.0.1440.860@0.0.1440.860" timestamp="1585970806989" />
-    <state x="212" y="103" key="Vcs.Push.Dialog.v2" timestamp="1585971917044">
+    <state x="212" y="103" key="Vcs.Push.Dialog.v2" timestamp="1585986008863">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="212" y="103" key="Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860" timestamp="1585971917044" />
+    <state x="212" y="103" key="Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860" timestamp="1585986008863" />
     <state x="323" y="219" key="com.intellij.ide.util.TipDialog" timestamp="1585970616469">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="323" y="219" key="com.intellij.ide.util.TipDialog/0.0.1440.860@0.0.1440.860" timestamp="1585970616469" />
-    <state x="457" y="336" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585971300084">
+    <state x="457" y="336" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585986194112">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="457" y="336" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1585971300084" />
+    <state x="457" y="336" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1585986194112" />
     <state x="459" y="199" key="git4idea.merge.GitMergeDialog" timestamp="1585971412053">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
