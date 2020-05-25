@@ -5,11 +5,11 @@
 spring:
   profiles:
     active: dev
-  jpa:
-    database: mysql
-    show-sql: true
-    hibernate:
-      ddl-auto: update
+#  jpa:
+#    database: mysql
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
   thymeleaf:
     cache: false
   mvc:
@@ -29,3 +29,8 @@ server:
   port: 9090
   servlet:
     context-path: /
+
+#sql日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

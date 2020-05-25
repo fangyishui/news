@@ -1,4 +1,4 @@
-package com.mynews.entitys;
+package com.mynews.entity;
 
 import lombok.Data;
 

@@ -1,21 +1,19 @@
 package com.mynews.controller;
 
 
-import java.util.List;
-
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.mynews.entity.AjaxResult;
+import com.mynews.entity.News;
+import com.mynews.service.NewsService;
 import com.mynews.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import com.mynews.entitys.AjaxResult;
-import com.mynews.entitys.News;
-import com.mynews.service.NewsService;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @RestController
 //@Controller
@@ -73,17 +71,19 @@ public class NewsController extends AbstractController {
 
 	@GetMapping("newss")
 	public ModelAndView findNewsAll(@RequestParam(defaultValue = "1") int pageNumber,
-							  @RequestParam(defaultValue = "100")  int pageSize){
-		ModelAndView model = getModelAndView("news/list");
-		model.addObject("newss", newsService.findNewsAll(pageNumber,pageSize));
+							  @RequestParam(defaultValue = "15")  int pageSize){
+		ModelAndView model = getModelAndView("news/news");
+		IPage<News> newsAll = newsService.findNewsAll(pageNumber, pageSize);
+		model.addObject("list", newsAll.getRecords());
+		model.addObject("current", newsAll.getCurrent());
+		model.addObject("pages", newsAll.getPages());
 		return model;
 	}
 
 	@GetMapping("newss2")
-//	@ResponseBody
 	@ApiOperation(value="列表")
 	public R newsAll(Model model, @RequestParam(defaultValue = "1") int pageNumber,
-							  @RequestParam(defaultValue = "100")  int pageSize){
+							  @RequestParam(defaultValue = "10")  int pageSize){
 		return R.ok().put("list", newsService.findNewsAll(pageNumber,pageSize));
 	}
 
@@ -99,6 +99,7 @@ public class NewsController extends AbstractController {
 	public List<News> findtable2(Model model){
 //		model.addAttribute("newss", newsService.findNewsAll(1, 11));
 //		return "news/list";
-		return newsService.findNewsAll(1, 11);
+//		return newsService.findNewsAll(1, 11);
+		return null;
 	}
 }

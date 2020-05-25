@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>userList</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"></link>
+</head>
+<body class="container">
+<br/>
+<h1>新闻展示</h1>
+<br/><br/>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>新闻标题</th>
+            <th>--年--</th>
+            <th>--月--</th>
+            <th>时间</th>
+            <!-- 					<th>图片路径</th> -->
+            <th>来源类型</th>
+<!--            <th>操作</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="n,s:${list}">
+            <td th:text="${s.index +1}"></td>
+            <td><a class="btn" th:href="${n.url}" target="_blank">[[${n.title}]]</a></td>
+            <td th:text="${n.year}+'年'"></td>
+            <td th:text="${n.month}+'月'"></td>
+            <td th:text="${#dates.format(n.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            <!-- 					<td th:text="${n.imgurl}"></td> -->
+            <td th:text="百度新闻" th:if="${n.newsType==1}"></td>
+            <td th:text="网易新闻" th:if="${n.newsType==2}"></td>
+            <td th:text="今日头条" th:if="${n.newsType==3}"></td>
+            <td th:text="微博热搜" th:if="${n.newsType==4}"></td>
+            <td>
+<!--                <a class="btn btn-sm btn-primary" th:href="@{/news/}+${n.id}">编辑</a>-->
+                <!--						<button th:attr="del_uri=@{/news/}+${n.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+<!--        <a href="/toAdd" th:href="@{/toAdd}" class="btn btn-info">add</a>-->
+    </div>
+</div>
+
+<div class="modal-footer no-margin-top">
+    <ul class="pagination pull-right no-margin">
+
+        <!-- 首页 -->
+        <li>
+            <a th:href="'/newss'">首页</a>
+        </li>
+
+        <!-- 上一页 -->
+        <li th:if="${current > 1 }">
+            <a th:href="'/newss?pageNumber=' + ${current-1}" th:text="上一页"></a>
+        </li>
+
+<!--        &lt;!&ndash; 中间页 &ndash;&gt;-->
+<!--        <li th:each="pageNum:${#numbers.sequence(0, newss.getTotalPages() - 1)}">-->
+<!--            <a th:href="'/newss?pageNumber=' + ${pageNum}" th:text="${pageNum + 1}" th:if="${pageNum ne newss.pageable.getPageNumber()}"></a>-->
+<!--            <a th:href="'/newss?pageNumber=' + ${pageNum}" th:text="${pageNum + 1}" th:if="${pageNum eq newss.pageable.getPageNumber()}" th:style="'font-weight:bold;background: #6faed9;'"></a>-->
+<!--        </li>-->
+        <!-- 下一页 -->
+        <li th:if="${current < pages}">
+            <a th:href="'/newss?pageNumber=' + ${current+1}" th:text="下一页"></a>
+        </li>
+
+        <!-- 尾页 -->
+        <li>
+            <a th:href="'/newss?pageNumber=' + ${pages}">尾页</a>
+        </li>
+
+    </ul>
+</div>
+
+</body>
+</html>
