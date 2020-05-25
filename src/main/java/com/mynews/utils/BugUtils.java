@@ -124,18 +124,6 @@ public class BugUtils {
 		}
 
 
-//		List<News> nss = new ArrayList<>();
-//		for (int i = 0; i <data.size() ; i++) {
-//			News n = new News();
-//			n.setTitle();
-//			if(i == 0 || i ==1){
-//				continue;
-//			}
-//			JSONObject js = (JSONObject)data.get(i);
-//			System.out.println(js.get("title"));
-//
-//		}
-
 		return null;
 	}
 
