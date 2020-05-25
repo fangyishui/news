@@ -1,22 +1,15 @@
 package com.mynews.utils;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.mynews.entity.News;
 import com.mynews.service.NewsService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.*;
 
 
@@ -88,42 +81,21 @@ public class BugUtils {
 	}
 
 	public static List<News> findJinRiTouTiao() {
+		String url = "https://www.toutiao.com/ch/news_hot/";
+//		Document document = JsoupUtil.getDocument("https://m.toutiao.com/?channel=news_hot&W2atIF=1#channel=news_hot");
+		String body = HttpClientUtil.doGet(url, null);
+		Document parse = Jsoup.parse(body);
 
-		WebClient webClient = new WebClient(BrowserVersion.CHROME);
-		webClient.getOptions().setJavaScriptEnabled(true);
-		webClient.getOptions().setCssEnabled(false);
-		webClient.getOptions().setActiveXNative(false);
-		webClient.getOptions().setCssEnabled(false);
-		webClient.getOptions().setThrowExceptionOnScriptError(false);
-		webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
-		webClient.getOptions().setTimeout(10000);
-		HtmlPage htmlPage = null;
-		try {
-			htmlPage = webClient.getPage("https://www.toutiao.com/ch/news_hot/");
-			webClient.waitForBackgroundJavaScript(10000);
-			String htmlString = htmlPage.asXml();
-//			 Jsoup.parse(htmlString);
-			System.out.println("==============================");
-//			System.out.println(Jsoup.parse(htmlString));
-			System.out.println("==============================");
+//		parse.select()
 
-			for (Element a : Jsoup.parse(htmlString).select("a[href~=/group/.*]:not(.comment)")) {
-				String href = a.attr("href");
-				String title = StringUtils.isNotBlank(a.select("p").text()) ?
-						a.select("p").text() : a.text();
-				String image = a.select("img").attr("src");
-				log.info("heref {} , title {} , image {} " ,href,title,image );
-			}
-
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			webClient.close();
-		}
-
-
+//		System.out.println(document.text());
+		//		for (Element a : Jsoup.parse(htmlString).select("a[href~=/group/.*]:not(.comment)")) {
+//			String href = a.attr("href");
+//			String title = StringUtils.isNotBlank(a.select("p").text()) ?
+//					a.select("p").text() : a.text();
+//			String image = a.select("img").attr("src");
+//			log.info("heref {} , title {} , image {} " ,href,title,image );
+//		}
 		return null;
 	}
 
@@ -148,6 +120,7 @@ public class BugUtils {
 		}
 		return nss;
 	}
+
 
 
 	public static void main(String[] args) {
