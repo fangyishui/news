@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.mynews.entity.AjaxResult;
 import com.mynews.entity.News;
 import com.mynews.service.NewsService;
-import com.mynews.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,12 +79,12 @@ public class NewsController extends AbstractController {
 		return model;
 	}
 
-	@GetMapping("newss2")
-	@ApiOperation(value="列表")
-	public R newsAll(Model model, @RequestParam(defaultValue = "1") int pageNumber,
-							  @RequestParam(defaultValue = "10")  int pageSize){
-		return R.ok().put("list", newsService.findNewsAll(pageNumber,pageSize));
-	}
+//	@GetMapping("newss2")
+//	@ApiOperation(value="列表")
+//	public R newsAll(Model model, @RequestParam(defaultValue = "1") int pageNumber,
+//							  @RequestParam(defaultValue = "10")  int pageSize){
+//		return R.ok().put("list", newsService.findNewsAll(pageNumber,pageSize));
+//	}
 
 	@GetMapping("table1")
 	@ResponseBody
