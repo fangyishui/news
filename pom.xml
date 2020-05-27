@@ -103,12 +103,6 @@
 			<version>2.7.0</version>
 		</dependency>
 
-<!--		<dependency>-->
-<!--			<groupId>net.sourceforge.htmlunit</groupId>-->
-<!--			<artifactId>htmlunit</artifactId>-->
-<!--			<version>2.36.0</version>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -126,7 +120,11 @@
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 			<version>3.3.1.tmp</version>
 		</dependency>
-
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>5.3.5</version>
+		</dependency>
 	</dependencies>
 
 	<build>

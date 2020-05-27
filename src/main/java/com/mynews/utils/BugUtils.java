@@ -1,9 +1,10 @@
 package com.mynews.utils;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.mynews.entity.News;
 import com.mynews.service.NewsService;
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class BugUtils {
 
 	static final Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT+08:00"));
 
+	public static final String FUNNY = "http://www.toutiao.com/api/pc/feed/?utm_source=toutiao&widen=1";
+
+
 	@Autowired
 	private NewsService newsService;
 
@@ -33,8 +37,8 @@ public class BugUtils {
 		List<News> nss2 = BugUtils.findWangYi();
 		newsService.addNewsAll(nss2);
 
-//		List<News> nss3 = BugUtils.findJinRiTouTiao();
-//		newsService.addNewsAll(nss3);
+		List<News> nss3 = BugUtils.findJinRiTouTiao();
+		newsService.addNewsAll(nss3);
 
 		List<News> nss4 = BugUtils.findWeiBo();
 		newsService.addNewsAll(nss4);
@@ -81,22 +85,40 @@ public class BugUtils {
 	}
 
 	public static List<News> findJinRiTouTiao() {
-		String url = "https://www.toutiao.com/ch/news_hot/";
-//		Document document = JsoupUtil.getDocument("https://m.toutiao.com/?channel=news_hot&W2atIF=1#channel=news_hot");
-		String body = HttpClientUtil.doGet(url, null);
-		Document parse = Jsoup.parse(body);
-
-//		parse.select()
-
-//		System.out.println(document.text());
-		//		for (Element a : Jsoup.parse(htmlString).select("a[href~=/group/.*]:not(.comment)")) {
-//			String href = a.attr("href");
-//			String title = StringUtils.isNotBlank(a.select("p").text()) ?
-//					a.select("p").text() : a.text();
-//			String image = a.select("img").attr("src");
-//			log.info("heref {} , title {} , image {} " ,href,title,image );
-//		}
-		return null;
+//		String url = "https://www.toutiao.com/api/pc/feed/?min_behot_time=0&category=__all__&utm_source=toutiao&widen=1&tadrequire=true&as=A185BE2C1C4BD89&cp=5ECC5B3DC899CE1&_signature=0zoThgAgEBAVbaoLXpl6bNM7UpAAI3.j24IiUcDjYTQAczDddaKJLZcuCzRY7lZ0e70wpveb-YI76nrxCVwP-WgEZQ1i64NKxjJza-zcCuwsuosiQEpkJuJAeiC63ZVFAIF";
+		String url = FUNNY + "&max_behot_time=" + "0"
+				+ "&max_behot_time_tmp=" + "0";
+		JSONObject param = TouTiaoCrawler.getUrlParam(); // 获取用js代码得到的as和cp的值
+		// 定义接口访问的模块
+		/*
+		 * __all__ : 推荐 news_hot: 热点 funny：搞笑
+		 */
+		String module = "news_hot";
+		url += "&as=" + param.get("as") + "&cp=" + param.get("cp")
+				+ "&category=" + module;
+		System.out.println(url);
+		Document document = JsoupUtil.getDocument(url);
+		String text = document.text();
+		JSONObject jsonObject = JSONObject.parseObject(text);
+		List<News> list = new ArrayList<>();
+		if(jsonObject.get("message").equals("success")){
+			JSONArray jsonArray = (JSONArray)jsonObject.get("data");
+			for (Object o : jsonArray){
+				JSONObject jObj = (JSONObject)o;
+				News news = new News();
+				news.setContent(jObj.getString("abstract"));
+				news.setCreateTime(new Date());
+				news.setImgUrl(jObj.getString("image_url"));
+			//	http://p1.pstatp.com/large/pgc-image/836a620ae45b4762a77ed24f3ff999cf
+				news.setMonth(c.get(Calendar.MONTH)+1);
+				news.setNewsType(3);
+				news.setTitle(jObj.getString("title"));
+				news.setUrl("https://www.toutiao.com/"+jObj.getString("source_url"));
+				news.setYear(c.get(Calendar.YEAR));
+				list.add(news);
+			}
+		}
+		return list;
 	}
 
 	public static List<News> findWeiBo() {
@@ -124,7 +146,7 @@ public class BugUtils {
 
 
 	public static void main(String[] args) {
-		System.out.println(BugUtils.findJinRiTouTiao());
+		BugUtils.findJinRiTouTiao();
 //		System.out.println(BugUtils.findBaiDu());
 //		System.out.println(BugUtils.findWeiBo());
 
