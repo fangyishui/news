@@ -46,7 +46,7 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
 
 	@Override
 	public Boolean addNewsAll(List<News> ns) {
-		return true;
+		return this.saveBatch(ns);
 	}
 
 

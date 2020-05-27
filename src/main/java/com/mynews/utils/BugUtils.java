@@ -27,9 +27,9 @@ public class BugUtils {
 	@Autowired
 	private NewsService newsService;
 
-	@Scheduled(cron="0 * * * * 1-7")
+//	@Scheduled(cron="0 * * * * 1-7")
 //	@Scheduled(cron="0 0 0,8,16 * * 1-7")
-//	@Scheduled(cron = "0 0 0,6,12,18 * * 1-7")
+	@Scheduled(cron = "0 0 0,6,12,18 * * 1-7")
 	public void saveAll() {
 		List<News> nss1 = BugUtils.findBaiDu();
 		newsService.addNewsAll(nss1);
