@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @RestController
-//@Controller
 @Api("swaggerDemoController相关的api")
 public class NewsController extends AbstractController {
 
@@ -79,13 +78,6 @@ public class NewsController extends AbstractController {
 		return model;
 	}
 
-//	@GetMapping("newss2")
-//	@ApiOperation(value="列表")
-//	public R newsAll(Model model, @RequestParam(defaultValue = "1") int pageNumber,
-//							  @RequestParam(defaultValue = "10")  int pageSize){
-//		return R.ok().put("list", newsService.findNewsAll(pageNumber,pageSize));
-//	}
-
 	@GetMapping("table1")
 	@ResponseBody
 	public String findtable(Model model,int pageNumber,int pageSize){
@@ -96,9 +88,6 @@ public class NewsController extends AbstractController {
 	@GetMapping("table2")
 	@ResponseBody
 	public List<News> findtable2(Model model){
-//		model.addAttribute("newss", newsService.findNewsAll(1, 11));
-//		return "news/list";
-//		return newsService.findNewsAll(1, 11);
 		return null;
 	}
 }

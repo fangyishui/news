@@ -4,7 +4,8 @@ spring:
         driver-class-name: com.mysql.cj.jdbc.Driver
         username: gyz
         password: gyz
-
 my:
     scheduled:
         cron: 0 0 0,6,12,18 * * 1-7
+swagger:
+    enable: false

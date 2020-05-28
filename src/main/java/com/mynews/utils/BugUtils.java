@@ -9,7 +9,6 @@ import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
 import java.util.*;
 
 
@@ -20,7 +19,6 @@ public class BugUtils {
 
 	public static final String FUNNY = "http://www.toutiao.com/api/pc/feed/?utm_source=toutiao&widen=1";
 
-
 	@Autowired
 	private NewsService newsService;
 
@@ -30,16 +28,16 @@ public class BugUtils {
 	@Scheduled(cron = ("${my.scheduled.cron}"))
 	public void saveAll() {
 		List<News> nss1 = BugUtils.findBaiDu();
-		newsService.addNewsAll(nss1);
+		newsService.addBatchNews(nss1);
 
 		List<News> nss2 = BugUtils.findWangYi();
-		newsService.addNewsAll(nss2);
+		newsService.addBatchNews(nss2);
 
 		List<News> nss3 = BugUtils.findJinRiTouTiao();
-		newsService.addNewsAll(nss3);
+		newsService.addBatchNews(nss3);
 
 		List<News> nss4 = BugUtils.findWeiBo();
-		newsService.addNewsAll(nss4);
+		newsService.addBatchNews(nss4);
 	}
 
 	public static List<News> findBaiDu() {
@@ -98,6 +96,7 @@ public class BugUtils {
 		String text = document.text();
 		JSONObject jsonObject = JSONObject.parseObject(text);
 		List<News> list = new ArrayList<>();
+		int i = 0;
 		if(jsonObject.get("message").equals("success")){
 			JSONArray jsonArray = (JSONArray)jsonObject.get("data");
 			for (Object o : jsonArray){
@@ -112,6 +111,10 @@ public class BugUtils {
 				news.setUrl("https://www.toutiao.com/"+jObj.getString("source_url"));
 				news.setYear(c.get(Calendar.YEAR));
 				list.add(news);
+				i++;
+				if(i == 10){
+					break;
+				}
 			}
 		}
 		return list;
@@ -138,8 +141,6 @@ public class BugUtils {
 		}
 		return nss;
 	}
-
-
 
 	public static void main(String[] args) {
 		BugUtils.findJinRiTouTiao();

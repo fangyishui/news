@@ -30,7 +30,4 @@ server:
   servlet:
     context-path: /
 
-#sql日志
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
