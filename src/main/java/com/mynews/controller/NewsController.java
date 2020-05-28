@@ -1,10 +1,9 @@
 package com.mynews.controller;
 
-
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.mynews.entity.AjaxResult;
 import com.mynews.entity.News;
 import com.mynews.service.NewsService;
+import com.mynews.utils.PageUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import java.util.Map;
+
 
 @RestController
 @Api("swaggerDemoController相关的api")
@@ -68,26 +68,13 @@ public class NewsController extends AbstractController {
 	}
 
 	@GetMapping("newss")
-	public ModelAndView findNewsAll(@RequestParam(defaultValue = "1") int pageNumber,
-							  @RequestParam(defaultValue = "15")  int pageSize){
+	public ModelAndView findNewsAll(@RequestBody Map<String,Object> map){
 		ModelAndView model = getModelAndView("news/news");
-		IPage<News> newsAll = newsService.findNewsAll(pageNumber, pageSize);
-		model.addObject("list", newsAll.getRecords());
-		model.addObject("current", newsAll.getCurrent());
-		model.addObject("pages", newsAll.getPages());
+		PageUtils newsAll = newsService.findNewsAll(map);
+		model.addObject("list", newsAll.getList());
+		model.addObject("current", newsAll.getCurrPage());
+		model.addObject("pages", newsAll.getPageSize());
 		return model;
 	}
 
-	@GetMapping("table1")
-	@ResponseBody
-	public String findtable(Model model,int pageNumber,int pageSize){
-		model.addAttribute("newss", newsService.findNewsAll(1, 11));
-		return "news/list";
-	}
-
-	@GetMapping("table2")
-	@ResponseBody
-	public List<News> findtable2(Model model){
-		return null;
-	}
 }
