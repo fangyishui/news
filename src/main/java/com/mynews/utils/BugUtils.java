@@ -108,7 +108,7 @@ public class BugUtils {
 				news.setMonth(c.get(Calendar.MONTH)+1);
 				news.setNewsType(3);
 				news.setTitle(jObj.getString("title"));
-				news.setUrl("https://www.toutiao.com/"+jObj.getString("source_url"));
+				news.setUrl("https://www.toutiao.com"+jObj.getString("source_url"));
 				news.setYear(c.get(Calendar.YEAR));
 				list.add(news);
 				i++;

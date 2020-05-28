@@ -1,5 +1,6 @@
 package com.mynews.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mynews.entity.News;
 import com.mynews.utils.PageUtils;
@@ -18,6 +19,8 @@ public interface NewsService extends IService<News> {
 	 News findNewsById(Integer id);
 
 	 PageUtils findNewsAll(Map<String, Object> params);
+
+	IPage<News> findAll(int page, int pageSize);
 
 	 Boolean addBatchNews(List<News> ns);
 }

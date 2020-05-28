@@ -3,6 +3,7 @@ package com.mynews.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mynews.dao.NewsMapper;
 import com.mynews.entity.News;
@@ -59,6 +60,12 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
 						.orderByDesc("SORT_CODE", "UPDATE_TIME")
 		);
 		return new PageUtils(page);
+	}
+
+	@Override
+	public IPage<News> findAll(int page, int pageSize) {
+		Page<News> pageN = new Page<News>(page,pageSize);
+		return newsMapper.selectPage(pageN,null);
 	}
 
 	@Override
