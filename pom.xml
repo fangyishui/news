@@ -16,7 +16,6 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-
 	</properties>
 
 	<dependencies>
@@ -47,7 +46,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-
 		<dependency>
 		    <groupId>org.jsoup</groupId>
 		    <artifactId>jsoup</artifactId>
@@ -101,7 +99,6 @@
 			<version>5.3.5</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -118,5 +115,4 @@
 <!--              </plugin> -->
 		</plugins>
 	</build>
-
 </project>
