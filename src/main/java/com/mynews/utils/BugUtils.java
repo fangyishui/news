@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.mynews.entity.News;
 import com.mynews.service.NewsService;
-import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,6 @@ import java.util.*;
 
 
 @Component
-//@Lazy(false)
-@Slf4j
 public class BugUtils {
 
 	static final Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT+08:00"));
@@ -29,7 +26,8 @@ public class BugUtils {
 
 //	@Scheduled(cron="0 * * * * 1-7")
 //	@Scheduled(cron="0 0 0,8,16 * * 1-7")
-	@Scheduled(cron = "0 0 0,6,12,18 * * 1-7")
+//	@Scheduled(cron = "0 0 0,6,12,18 * * 1-7")
+	@Scheduled(cron = ("${my.scheduled.cron}"))
 	public void saveAll() {
 		List<News> nss1 = BugUtils.findBaiDu();
 		newsService.addNewsAll(nss1);
@@ -85,7 +83,6 @@ public class BugUtils {
 	}
 
 	public static List<News> findJinRiTouTiao() {
-//		String url = "https://www.toutiao.com/api/pc/feed/?min_behot_time=0&category=__all__&utm_source=toutiao&widen=1&tadrequire=true&as=A185BE2C1C4BD89&cp=5ECC5B3DC899CE1&_signature=0zoThgAgEBAVbaoLXpl6bNM7UpAAI3.j24IiUcDjYTQAczDddaKJLZcuCzRY7lZ0e70wpveb-YI76nrxCVwP-WgEZQ1i64NKxjJza-zcCuwsuosiQEpkJuJAeiC63ZVFAIF";
 		String url = FUNNY + "&max_behot_time=" + "0"
 				+ "&max_behot_time_tmp=" + "0";
 		JSONObject param = TouTiaoCrawler.getUrlParam(); // 获取用js代码得到的as和cp的值
@@ -109,7 +106,6 @@ public class BugUtils {
 				news.setContent(jObj.getString("abstract"));
 				news.setCreateTime(new Date());
 				news.setImgUrl(jObj.getString("image_url"));
-			//	http://p1.pstatp.com/large/pgc-image/836a620ae45b4762a77ed24f3ff999cf
 				news.setMonth(c.get(Calendar.MONTH)+1);
 				news.setNewsType(3);
 				news.setTitle(jObj.getString("title"));
@@ -147,8 +143,5 @@ public class BugUtils {
 
 	public static void main(String[] args) {
 		BugUtils.findJinRiTouTiao();
-//		System.out.println(BugUtils.findBaiDu());
-//		System.out.println(BugUtils.findWeiBo());
-
 	}
 }

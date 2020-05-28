@@ -8,3 +8,7 @@ spring:
 mybatis-plus:
     configuration:
         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+my:
+    scheduled:
+        cron: 0 * * * * 1-7
+
