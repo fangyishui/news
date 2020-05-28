@@ -1,7 +1,6 @@
 ﻿#logging:
 #  path: /log/
 #  file: log.log
-
 spring:
   profiles:
     active: dev
@@ -15,7 +14,6 @@ spring:
   mvc:
     favicon:
       enabled: false
-
 #    open-in-view: true
 #懒加载
 #spring.jpa.open-in-view=true
@@ -29,5 +27,3 @@ server:
   port: 9090
   servlet:
     context-path: /
-
-
