@@ -22,9 +22,6 @@ public class BugUtils {
 	@Autowired
 	private NewsService newsService;
 
-//	@Scheduled(cron="0 * * * * 1-7")
-//	@Scheduled(cron="0 0 0,8,16 * * 1-7")
-//	@Scheduled(cron = "0 0 0,6,12,18 * * 1-7")
 	@Scheduled(cron = ("${my.scheduled.cron}"))
 	public void saveAll() {
 		List<News> nss1 = BugUtils.findBaiDu();
@@ -93,8 +90,7 @@ public class BugUtils {
 				+ "&category=" + module;
 		System.out.println(url);
 		Document document = JsoupUtil.getDocument(url);
-		String text = document.text();
-		JSONObject jsonObject = JSONObject.parseObject(text);
+		JSONObject jsonObject = JSONObject.parseObject(document.text());
 		List<News> list = new ArrayList<>();
 		int i = 0;
 		if(jsonObject.get("message").equals("success")){

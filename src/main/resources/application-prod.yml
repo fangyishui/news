@@ -7,5 +7,6 @@ spring:
 my:
     scheduled:
         cron: 0 0 0,6,12,18 * * 1-7
+#        cron: 0 0/1 * * * 1-7
 swagger:
     enable: false

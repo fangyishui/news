@@ -5,10 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 
 public class TouTiaoCrawler {
@@ -151,7 +148,12 @@ public class TouTiaoCrawler {
 
             String jsFileName = "toutiao.js"; // 读取js文件
 
-            reader = new FileReader(jsFileName); // 执行指定脚本
+//            String root = System.getProperty("user.dir");
+//            String filePath = root+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+jsFileName;
+//            System.out.println(filePath);
+            reader = new FileReader(jsFileName);
+//            InputStream io = Thread.currentThread().getContextClassLoader().getResourceAsStream(jsFileName);
+//            reader = new FileReader(new FileInputStream(io)); // 执行指定脚本
             engine.eval(reader);
 
             if (engine instanceof Invocable) {
