@@ -146,7 +146,7 @@ public class TouTiaoCrawler {
             ScriptEngineManager manager = new ScriptEngineManager();
             ScriptEngine engine = manager.getEngineByName("javascript");
 
-            String jsFileName = "toutiao.js"; // 读取js文件
+            String jsFileName = System.getProperty("user.dir")+"/src/main/resources/toutiao.js"; // 读取js文件
 
 //            String root = System.getProperty("user.dir");
 //            String filePath = root+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+jsFileName;

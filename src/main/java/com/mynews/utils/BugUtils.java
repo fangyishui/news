@@ -139,6 +139,7 @@ public class BugUtils {
 	}
 
 	public static void main(String[] args) {
-		BugUtils.findJinRiTouTiao();
+
+		System.out.println(BugUtils.findJinRiTouTiao());
 	}
 }
