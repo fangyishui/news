@@ -98,6 +98,14 @@
 			<artifactId>hutool-all</artifactId>
 			<version>5.3.5</version>
 		</dependency>
+
+		<!--h2数据库-->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!--h2数据库-->
 	</dependencies>
 	<build>
 		<plugins>

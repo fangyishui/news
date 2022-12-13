@@ -3,7 +3,7 @@
 #  file: log.log
 spring:
   profiles:
-    active: dev
+    active: h2dev
 #  jpa:
 #    database: mysql
 #    show-sql: true
